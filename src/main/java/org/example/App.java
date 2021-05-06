@@ -27,14 +27,13 @@ public class App
 
         Alien obj1 = (Alien) context.getBean("alien");
         obj1.code();
-        obj1.age = 15;
-        System.out.println(obj1.age);
+        System.out.println(obj1.getAge());
 
         /*Here though you are trying to craete a new obj of alien , spring gives you a same obj as obj1 because spring beans are singleton by default
-        and a singleton class wil have only 1 object*/
-        Alien obj2 = (Alien) context.getBean("alien");
+        and a singleton class wil have only 1 object and i fyou wwant to create a multiple objects for a class
+        then spring has one more feauture called scope*/
+        /*Alien obj2 = (Alien) context.getBean("alien");
         obj2.code();
-        System.out.println(obj2.age);// Print 15 as this is pointing to same object.
-
+        System.out.println(obj1.getAge());*/
     }
 }

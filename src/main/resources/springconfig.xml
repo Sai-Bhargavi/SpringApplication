@@ -5,7 +5,49 @@
        xsi:schemaLocation = "http://www.springframework.org/schema/beans
    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <bean id = "alien" class = "org.example.Alien">
-    </bean>
+<!--
+    Scope is by default singleton and if u want to create a multiple objects of bean then u use prototype
+-->
 
+    <!--In singleton, if u dont ask the main class to create an object also , with the bean spring container  generates an object
+    but with th eprototype, if u dont ask main class to give an object then even though bean is present , spring container will not craete an object until and unless it is requested for.
+    -->
+<!--
+    <bean id = "alien" class="org.example.Alien" autowire="byName">
+        <property name="age" value="15"></property>
+        <property name="computer" ref="desktop"></property>
+    </bean>
+    <bean id = "desktop" class="org.example.Desktop"></bean>-->
+
+
+    <!--
+    this will give you an error because it does not know waht to pick either latop or deskop
+    <bean id = "alien" class="org.example.Alien" autowire="byType">
+        <property name="age" value="15"></property>
+    </bean>
+    <bean id = "laptop" class="org.example.Laptop"></bean>
+    <bean id = "desktop" class="org.example.Desktop"></bean>-->
+
+   <!-- <bean id = "alien" class="org.example.Alien" autowire="byType">
+        <property name="age" value="15"></property>
+    </bean>
+    <bean id = "laptop" class="org.example.Laptop"></bean>-->
+
+
+    <bean id = "alien" class="org.example.Alien" autowire="byType">
+        <property name="age" value="15"></property>
+    </bean>
+    <bean id = "laptop" class="org.example.Laptop" primary="true"></bean>
+    <bean id = "desktop" class="org.example.Desktop" ></bean>
+
+
+
+<!--
+    here autowire will not paly any role as you defined a property tag for compter
+    <bean id = "alien" class="org.example.Alien" autowire="byType">
+        <property name="age" value="15"></property>
+        <property name="computer" ref="laptop"></property></bean>
+    <bean id = "laptop" class="org.example.Laptop"></bean>
+    <bean id = "desktop" class="org.example.Desktop"></bean>
+    -->
 </beans>
